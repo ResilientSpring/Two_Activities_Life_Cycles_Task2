@@ -37,6 +37,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.android.twoactivities", appContext.getPackageName());
+        assertEquals("com.example.android.twoactivities_LifeCycle2", appContext.getPackageName());
     }
 }

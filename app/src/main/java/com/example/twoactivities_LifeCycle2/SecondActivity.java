@@ -1,9 +1,10 @@
-package com.example.twoactivities;
+package com.example.twoactivities_LifeCycle2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,8 +14,47 @@ import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(LOG_TAG, "onStart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(LOG_TAG, "onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "onResume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(LOG_TAG, "onStop");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(LOG_TAG, "onRestart");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(LOG_TAG, "onDestroy");
+    }
+
+
+    private static final String LOG_TAG = SecondActivity.class.getSimpleName();
+
     // add a public constant to define the key for the Intent extra
-    public static final String EXTRA_REPLY = "com.example.android.twoactivities.extra.REPLY"; // URL
+    public static final String EXTRA_REPLY = "com.example.android.twoactivities_LifeCycle2.extra.REPLY"; // URL
 
     // Add a private variable at the top of the class to hold the EditText.
     private EditText mReply;
@@ -23,6 +63,9 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        Log.d(LOG_TAG, "-------");
+        Log.d(LOG_TAG, "onCreate");
 
         // Get the Intent that activated this Activity.
         Intent intent = getIntent();
@@ -65,6 +108,9 @@ public class SecondActivity extends AppCompatActivity {
         // Set the result to RESULT_OK to indicate that the response was successful.
         setResult(RESULT_OK, replyIntent);
         // The Activity class defines the result codes, including RESULT_OK and RESULT_CANCELLED.
+
+
+        Log.d(LOG_TAG, "End SecondActivity");
 
         // Call finish() to close the Activity and return to MainActivity.
         finish();
